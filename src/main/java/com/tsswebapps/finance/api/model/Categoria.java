@@ -16,14 +16,13 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "tb_categorias")
 public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(length = 50)
-	private String descricao;
+	private String catDescricao;
 	@CreationTimestamp
 	private LocalDateTime createdAt;
 	@UpdateTimestamp

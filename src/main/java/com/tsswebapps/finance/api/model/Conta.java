@@ -22,7 +22,6 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "tb_contas")
 public class Conta {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,12 +29,12 @@ public class Conta {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
-	private TipoConta tipoConta;
+	private TipoConta conTipoConta;
 	
-	private String nome;
-	private String NumeroConta;
-	private String NumeroAgencia;
-	private Boolean ativo;
+	private String conNome;
+	private String conNumeroConta;
+	private String conNumeroAgencia;
+	private Boolean conAtiva;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -44,6 +43,6 @@ public class Conta {
 	private LocalDateTime updatedAt;
 	
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "id", name = "usuario_fk", nullable = false)
+	@JoinColumn(referencedColumnName = "id", name = "con_usuario", nullable = false)
 	private Usuario usuario;
 }

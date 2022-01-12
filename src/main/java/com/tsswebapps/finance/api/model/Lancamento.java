@@ -11,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -22,7 +21,6 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "tb_lancamentos")
 public class Lancamento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,12 +28,13 @@ public class Lancamento {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(length = 20)
-	private TipoLancamento tipoLancamento;
+	private TipoLancamento lanTipo;
 	
-	private Double valor;
+	private Double lanValor;
 	
-	private LocalDateTime data;
-	private String descricao;
+	private LocalDateTime lanData;
+	
+	private String lanDescricao;
 	
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -43,10 +42,10 @@ public class Lancamento {
 	private LocalDateTime updatedAt;
 	
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "id", name = "categoria_fk", nullable = false)
+	@JoinColumn(referencedColumnName = "id", name = "lan_categoria", nullable = false)
 	private Categoria categoria;
 	
 	@ManyToOne
-	@JoinColumn(referencedColumnName = "id", name = "conta_fk", nullable = false)
+	@JoinColumn(referencedColumnName = "id", name = "lan_conta", nullable = false)
 	private Conta conta;
 }
