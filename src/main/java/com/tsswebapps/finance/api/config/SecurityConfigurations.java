@@ -19,47 +19,47 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	private AuthenticatedService authenticatedService;
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(authenticatedService).passwordEncoder(new BCryptPasswordEncoder());
 	}
-	
+
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {	
-		
+	protected void configure(HttpSecurity http) throws Exception {
+
 		http.httpBasic()
-		.and()
-			.authorizeRequests()
+				.and()
+				.authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/user/register").permitAll()
 				.antMatchers(HttpMethod.GET, "/user/auth").permitAll()
-				.antMatchers(HttpMethod.GET, "/servicos/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/web/hello").permitAll()
+				.antMatchers(HttpMethod.GET, "/api/hello").permitAll()
 				.anyRequest().authenticated()
-			.and()
+				.and()
 				.cors()
-			.and()
+				.and()
 				.sessionManagement()
-					.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-			.and()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
 				.csrf()
 				.disable();
 	}
-	
+
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
-		
+
 		configuration.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
-		
+
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		
+
 		source.registerCorsConfiguration("/**", configuration);
-		
+
 		return source;
 	}
-	
 
 }
