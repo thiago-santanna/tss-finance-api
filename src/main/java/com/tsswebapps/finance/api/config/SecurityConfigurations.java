@@ -34,19 +34,23 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 		http.httpBasic()
 				.and()
 				.authorizeRequests()
-				.antMatchers(HttpMethod.GET, "/register").permitAll()
-				.antMatchers(HttpMethod.GET, "/login").permitAll()
-				.antMatchers(HttpMethod.GET, "/web/hello").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/hello").permitAll()
-				.anyRequest().authenticated()
+					.antMatchers(HttpMethod.GET, "/register").permitAll()
+					.anyRequest().authenticated()
 				.and()
-				.cors()
+					.formLogin()
+					.loginPage("/login")
+					.permitAll()
 				.and()
-				.sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+					.logout()
+					.permitAll()
 				.and()
-				.csrf()
-				.disable();
+					.cors()
+				.and()
+					.sessionManagement()
+					.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and()
+					.csrf()
+					.disable();
 	}
 
 	@Bean
