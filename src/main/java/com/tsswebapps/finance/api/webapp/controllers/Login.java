@@ -5,12 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class Hello {
+public class Login {
 
-  @GetMapping("/web/hello")
-  public String webHello(Model model) {
-	model.addAttribute("hello", "Hello, sou o recurso do front-end.");  
+	@GetMapping("/login")
+	public String userAuth(Model model) {
+		return "user-auth";
+	}
 	
-    return "web-hello";
-  }
 }
