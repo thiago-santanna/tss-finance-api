@@ -22,11 +22,16 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private AuthenticatedService authenticatedService;
+	
+//	@Autowired
+//	DataSource dataSource;
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(authenticatedService).passwordEncoder(new BCryptPasswordEncoder());
+	
+	  @Override 
+	  protected void configure(AuthenticationManagerBuilder auth) throws Exception { 
+		auth.userDetailsService(authenticatedService).passwordEncoder(new BCryptPasswordEncoder()); 
 	}
+	 
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -35,6 +40,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 				.and()
 				.authorizeRequests()
 					.antMatchers(HttpMethod.GET, "/usuario/cadastro").permitAll()
+					.antMatchers(HttpMethod.POST, "/usuario/salvar").permitAll()
 					.antMatchers(HttpMethod.GET, "/usuario/esqueci").permitAll()
 					.anyRequest().authenticated()
 				.and()
@@ -66,5 +72,24 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
 		return source;
 	}
+	
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		
+//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//		
+//		/* Bloco usado em aula pra criar um usuário pra dev em produção é usado o que está abaixo
+//		 * UserDetails user = User .builder() .username("thiago")
+//		 * .password(encoder.encode("102057")) .roles("ADM") .build();
+//		 * 
+//		 * auth.jdbcAuthentication() .dataSource(dataSource) .passwordEncoder(encoder)
+//		 * .withUser(user);
+//		 */
+//		  
+//		 auth.jdbcAuthentication() 
+//		 	.dataSource(dataSource) 
+//		 	.passwordEncoder(encoder);		
+//		
+//	}
 
 }

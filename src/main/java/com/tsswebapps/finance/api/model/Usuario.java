@@ -19,9 +19,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import lombok.Data;
 
-@Data
 @Entity
 @Table(name = "tb_usuarios")
 public class Usuario implements UserDetails {
@@ -91,4 +89,77 @@ public class Usuario implements UserDetails {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public List<Perfil> getPerfis() {
+		return perfis;
+	}
+
+	public void setPerfis(List<Perfil> perfis) {
+		this.perfis = perfis;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Usuario(String nome, String email, String senha, LocalDateTime createdAt, LocalDateTime updatedAt,
+			List<Perfil> perfis) {
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.perfis = perfis;
+	}
+
+	public Usuario() {
+	}
+	
+	
+	
+	
 }

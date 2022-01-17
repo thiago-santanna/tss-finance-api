@@ -16,18 +16,18 @@
 		<div class="">
 			<h1>Cadastro de Usuario</h1>
 		</div>
-		<form class="w-50" action="/v1/usuario" method="POST">
+		<form class="w-50" action="/usuario/salvar" method="POST">
 			<div class="mb-3">
 				<label for="nome" class="form-label">Nome</label>
-				<input type="text" class="form-control" id="nome" placeholder="Nome completo">
+				<input type="text" class="form-control" name="nome" placeholder="Nome completo">
 			</div>
 			<div class="mb-3">
 				<label for="email" class="form-label">E-mail</label>
-				<input type="email" class="form-control" id="email" placeholder="nome@examplo.com.br">
+				<input type="email" class="form-control" name="email" placeholder="nome@examplo.com.br">
 			</div>
 			<div class="mb-3">
-				<label for="senha" class="form-label">Nome</label>
-				<input type="password" class="form-control" id="senha" placeholder="password">
+				<label for="senha" class="form-label">Senha</label>
+				<input type="password" class="form-control" name="senha" placeholder="password">
 			</div>
 			<div class="col-auto">
 				<button type="submit" class="btn btn-primary mb-3">Salvar informações</button>
