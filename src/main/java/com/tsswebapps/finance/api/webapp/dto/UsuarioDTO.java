@@ -1,5 +1,7 @@
 package com.tsswebapps.finance.api.webapp.dto;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import com.tsswebapps.finance.api.model.Usuario;
 
 public class UsuarioDTO {
@@ -39,11 +41,12 @@ public class UsuarioDTO {
 	}
 	
 	public Usuario toUsuario() {
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		
 		Usuario usuario = new Usuario();
 		usuario.setNome(this.nome);
 		usuario.setEmail(this.email);
-		usuario.setSenha(this.senha);
-		
+		usuario.setSenha(encoder.encode(this.senha));		
 		return usuario;
 	}
 }
