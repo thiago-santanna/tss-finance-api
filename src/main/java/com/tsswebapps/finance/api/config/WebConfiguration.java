@@ -34,6 +34,7 @@ public class WebConfiguration extends WebSecurityConfigurerAdapter {
 				.permitAll();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Bean
 	@Override
 	public UserDetailsService userDetailsService() {
