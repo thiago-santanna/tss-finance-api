@@ -15,7 +15,7 @@ import com.tsswebapps.finance.api.webapp.service.ServiceSalvarUsuario;
 public class UsuarioController {
 	
 	@Autowired
-	public ServiceSalvarUsuario serviceSalvarUsuario;
+	public ServiceSalvarUsuario salvarUsuario;
 	
 	@GetMapping("/cadastro")
 	public String cadastrar() {
@@ -25,7 +25,7 @@ public class UsuarioController {
 	@PostMapping("/salvar")
 	public String salvarUsuario(UsuarioDTO reqUsuario) {
 		Usuario usuario = reqUsuario.toUsuario();
-		serviceSalvarUsuario.execute(usuario);
+		salvarUsuario.execute(usuario);
 		return "redirect:/";
 	}
 }

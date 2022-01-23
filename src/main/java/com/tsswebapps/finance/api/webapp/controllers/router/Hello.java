@@ -1,4 +1,4 @@
-package com.tsswebapps.finance.api.webapp.controllers;
+package com.tsswebapps.finance.api.webapp.controllers.router;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

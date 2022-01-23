@@ -8,18 +8,20 @@ import org.springframework.stereotype.Service;
 
 import com.tsswebapps.finance.api.model.Perfil;
 import com.tsswebapps.finance.api.model.Usuario;
-import com.tsswebapps.finance.api.repository.IPessoaRepository;
+import com.tsswebapps.finance.api.repository.IUsuarioRepository;
 
 @Service
 public class ServiceSalvarUsuario {
 	
 	@Autowired
-	public IPessoaRepository usuarioRepo;
+	public IUsuarioRepository usuarioRepo;
 	
 	public void execute(Usuario usuario) {
 		Perfil perfilUsuario = new Perfil();
-		perfilUsuario.setNome("ADM");		
+		perfilUsuario.setNome("USER");
+		
 		List<Perfil> perfis = new ArrayList<>();
+		
 		perfis.add(perfilUsuario);
 		usuario.setPerfis(perfis);
 		

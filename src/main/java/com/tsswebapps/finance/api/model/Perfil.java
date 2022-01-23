@@ -5,8 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
-public class Perfil {
+public class Perfil  implements GrantedAuthority {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -37,6 +39,12 @@ public class Perfil {
 	}
 	
 	public Perfil() {}
+
+	@Override
+	public String getAuthority() {
+		// TODO Auto-generated method stub
+		return this.nome;
+	}
 	
 	
 
